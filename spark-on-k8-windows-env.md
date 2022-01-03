@@ -54,6 +54,9 @@ tar -xzvf spark-3.2.0-bin-hadoop3.2.tgz
 ## 3. Build Docker image
 >**Docker:** Docker is a software framework for building, running, and managing containers on servers and the cloud. 
 ```bash
+docker run -it --rm -v ${PWD}:/work -v //var/run/docker.sock:/var/run/docker.sock -w /work --net host alpine sh
+apk add docker-cli
+apk add bash
 ./spark-3.2.0-bin-hadoop3.2/bin/docker-image-tool.sh -r hello-spark -t v1 build
 ```
 
