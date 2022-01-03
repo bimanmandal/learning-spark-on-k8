@@ -59,7 +59,7 @@ apk add docker-cli bash
 ./spark-3.2.0-bin-hadoop3.2/bin/docker-image-tool.sh -r hello-spark -t v1 build
 exit
 ```
-*The above command execution will take some time to complete*
+*The above command execution will take some time to complete.*
 
 ## 4. Load Docker image in Kind Container Registry
 >**Container Registry:** A container registry is a repository, or collection of repositories, used to store container images for Kubernetes, DevOps,  and container-based application development. 
@@ -68,7 +68,7 @@ Run the following command to load the image
 ```bash
 kind load docker-image hello-spark/spark:v1 --name spark-cluster
 ```
-*The above command execution will take some time to complete*
+*The above command execution will take some time to complete.*
 
 
 ## 5. Set Spark ServiceAccount roles
@@ -139,15 +139,17 @@ spark-pi-driver                    1/1     Running   0          19s
 ```
 
 ## 7. Check the spark ui
-To check the spark ui, port forward from the driver pod.
+To check the spark ui, port forward from the driver pod. 
+Open a seperate terminal and run the following command
 ```bash
-kubectl port-forward spark-pi-driver 4041:4041
+kubectl port-forward spark-pi-driver 4041:4040
 ```
 You can see the web-ui by opening the following url `http://localhost:4041` in the browser.
 ![](./spark-ui.png)
 
 ## 8. Check Spark logs to see the value of pi
 You can check the spark logs using the following command.
+Open a seperate terminal and run the following command
 ```bash
 kubectl logs -f spark-pi-driver
 ```

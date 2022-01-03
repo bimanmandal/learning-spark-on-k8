@@ -59,6 +59,8 @@ tar -xzvf spark-3.2.0-bin-hadoop3.2.tgz
 ```bash
 ./spark-3.2.0-bin-hadoop3.2/bin/docker-image-tool.sh -r hello-spark -t v1 build
 ```
+*The above command execution will take some time to complete.*
+
 
 ## 4. Set Spark ServiceAccount roles
 >**ServiceAccount:** A service account provides an identity for processes that run in a Pod. \
@@ -129,14 +131,17 @@ spark-pi-driver                    1/1     Running   0          19s
 
 ## 6. Check the spark ui
 To check the spark ui, port forward from the driver pod.
+Open a seperate terminal and run the following command
+
 ```bash
-kubectl port-forward spark-pi-driver 4041:4041
+kubectl port-forward spark-pi-driver 4041:4040
 ```
 You can see the web-ui by opening the following url `http://localhost:4041` in the browser.
 ![](./spark-ui.png)
 
 ## 7. Check Spark logs to see the value of pi
 You can check the spark logs using the following command.
+Open a seperate terminal and run the following command
 ```bash
 kubectl logs -f spark-pi-driver
 ```
