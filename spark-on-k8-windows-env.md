@@ -54,11 +54,12 @@ tar -xzvf spark-3.2.0-bin-hadoop3.2.tgz
 ## 3. Build Docker image
 >**Docker:** Docker is a software framework for building, running, and managing containers on servers and the cloud. 
 ```bash
-docker run -it --rm -v ${PWD}:/work -v //var/run/docker.sock:/var/run/docker.sock -w /work --net host alpine sh
-apk add docker-cli
-apk add bash
+docker run -it --rm -v %cd%:/work -v //var/run/docker.sock:/var/run/docker.sock -w /work --net host alpine sh
+apk add docker-cli bash
 ./spark-3.2.0-bin-hadoop3.2/bin/docker-image-tool.sh -r hello-spark -t v1 build
+exit
 ```
+*The above command execution will take some time to complete*
 
 ## 4. Load Docker image in Kind Container Registry
 >**Container Registry:** A container registry is a repository, or collection of repositories, used to store container images for Kubernetes, DevOps,  and container-based application development. 
@@ -67,6 +68,7 @@ Run the following command to load the image
 ```bash
 kind load docker-image hello-spark/spark:v1 --name spark-cluster
 ```
+*The above command execution will take some time to complete*
 
 
 ## 5. Set Spark ServiceAccount roles
